@@ -8,6 +8,7 @@
     <PackageTags>Http;HttpClient;System.IO.Pipelines</PackageTags>
     <!--<PackageIcon>icon.jpg</PackageIcon>-->
     <GenerateDocumentationFile Condition=" $(Configuration) == 'Release' ">true</GenerateDocumentationFile>
+    <!--<MinVerMinimumMajorMinor>0.0</MinVerMinimumMajorMinor>-->
   </PropertyGroup>
 
   <ItemGroup>

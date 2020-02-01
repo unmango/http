@@ -49,12 +49,12 @@ jobs:
       projects: '**/*.csproj'
       arguments: '--no-restore -c $(BuildConfiguration)'
   
-  - task: DotNetCoreCLI@2
-    displayName: Update CI Settings
-    inputs:
-      command: custom
-      custom: msbuild
-      arguments: '/t:UpdateCiSettings /p:CI=true'
+#  - task: DotNetCoreCLI@2
+#    displayName: Update CI Settings
+#    inputs:
+#      command: custom
+#      custom: msbuild
+#      arguments: '/t:UpdateCiSettings /p:CI=true'
   
   - task: DotNetCoreCLI@2
     displayName: .NET Test
