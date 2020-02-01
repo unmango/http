@@ -40,7 +40,7 @@ steps:
     command: restore
     projects: '**/*.csproj'
     nugetConfigPath: NuGet.Config
-    externalFeedCredentials: $(UnMangoToken)
+    externalFeedCredentials: $(UnMango)   # Service Connection Name
     arguments: '-c $(BuildConfiguration)'
 
 - task: DotNetCoreCLI@2
