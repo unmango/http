@@ -18,6 +18,7 @@ pool: Linux
 variables:
   BuildConfiguration: Release
   UnMangoFeed: 'UnMango NuGet'
+  CI: true
 
 jobs:
 - job: build_test
