@@ -18,6 +18,7 @@ pool: Linux
 variables:
   BuildConfiguration: Release
   UnMangoFeed: 'UnMango NuGet'
+  CI: true
 
 jobs:
 - job: build_test
@@ -30,13 +31,6 @@ jobs:
     inputs:
       packageType: sdk
       useGlobalJson: true
-  
-  - task: DotNetCoreCLI@2
-    displayName: Update CI Settings
-    inputs:
-      command: custom
-      custom: msbuild
-      arguments: '/t:UpdateCiSettings /p:CI=true'
   
   - task: DotNetCoreCLI@2
     displayName: .NET Restore
