@@ -43,6 +43,7 @@ steps:
     nugetConfigPath: NuGet.Config
     externalFeedCredentials: $(UnMangoFeed)   # Service Connection Name
     arguments: '-c $(BuildConfiguration)'
+    verbosityRestore: Normal
 
 - task: DotNetCoreCLI@2
   displayName: .NET Build
