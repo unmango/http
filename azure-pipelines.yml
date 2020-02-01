@@ -1,0 +1,75 @@
+trigger:
+  batch: true
+  branches:
+    include:
+    - master
+    - release/*
+  paths:
+    exclude:
+    - README.md
+    - docs/*
+
+pr:
+- master
+- release/*
+
+pool: Linux
+
+variables:
+  BuildConfiguration: Release
+
+steps:
+- checkout: self
+
+- task: UseDotNet@2
+  displayName: Install .NET Core
+  inputs:
+    packageType: sdk
+    useGlobalJson: true
+
+- task: DotNetCoreCLI@2
+  displayName: Update CI Settings
+  inputs:
+    command: custom
+    custom: msbuild
+    arguments: '/t:UpdateCiSettings /p:CI=true'
+
+- task: DotNetCoreCLI@2
+  displayName: .NET Restore
+  inputs:
+    command: restore
+    projects: '**/*.csproj'
+    nugetConfigPath: NuGet.Config
+    externalFeedCredentials: $(UnMangoToken)
+    arguments: '-c $(BuildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: .NET Build
+  inputs:
+    command: build
+    projects: '**/*.csproj'
+    arguments: '--no-restore -c $(BuildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: .NET Test
+  inputs:
+    command: test
+    projects: '**/*[Tt]est*.csproj'
+    arguments: '--no-build --no-restore -c $(BuildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: .NET Pack
+  inputs:
+    command: pack
+    projects: '**/*.csproj'
+    configuration: $(BuildConfiguration)
+    nobuild: true
+    arguments: '--no-restore -o $(Build.ArtifactStagingDirectory)'
+    versioningScheme: off
+    verbosityPack: Normal
+
+- task: PublishBuildArtifacts@1
+  displayName: Publish Artifacts
+  inputs:
+    ArtifactName: Packages
+    PathtoPublish: $(Build.ArtifactStagingDirectory)

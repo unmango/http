@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <IsPackable>true</IsPackable>
+    <Description>A ground-up HttpClient utlizing new .NET Core APIs.</Description>
   </PropertyGroup>
 
 </Project>
