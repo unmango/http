@@ -3,18 +3,16 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <IsPackable>true</IsPackable>
-    <Description>A ground-up HttpClient utlizing new .NET Core APIs.</Description>
+    <Description>A ground-up HttpClient utlizing new .NET APIs.</Description>
+    <PackageId>UnMango.Http</PackageId>
+    <PackageTags>Http;HttpClient;System.IO.Pipelines</PackageTags>
+    <!--<PackageIcon>icon.jpg</PackageIcon>-->
+    <GenerateDocumentationFile Condition=" $(Configuration) == 'Release' ">true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="MinVer" Version="2.0.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="MinVer" Version="2.0.0" PrivateAssets="All" />
   </ItemGroup>
 
 </Project>
