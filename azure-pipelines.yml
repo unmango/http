@@ -17,7 +17,7 @@ pool: Linux
 
 variables:
   BuildConfiguration: Release
-  UnMangoFeed: 'UnMango GiHub NuGet'
+  UnMangoFeed: 'UnMango GitHub NuGet'
   CI: true
 
 jobs:
